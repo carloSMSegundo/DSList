@@ -10,7 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity // Configurar a classe java para que seja equivalente a uma tabela do banco
-		// relacional
+		// relacional e usar usada no GameMinDTO
 @Table(name = "tb_game") // Nome da tabela relacional
 public class Game {
 
