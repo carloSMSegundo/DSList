@@ -9,32 +9,41 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-@Entity //Configurar a classe java para que seja equivalente a uma tabela do banco relacional
-@Table(name = "tb_game") //Nome da tabela relacional
+@Entity // Configurar a classe java para que seja equivalente a uma tabela do banco
+		// relacional
+@Table(name = "tb_game") // Nome da tabela relacional
 public class Game {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) //Uma forma de indicar pro banco gerar o Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // Uma forma de indicar pro banco gerar o Id
 	private Long id;
 	private String title;
-	@Column(name = "game_year") //Alterando o nome da tabela "Year" pois a palavra é usada na linguagem e pode acarretar problemas
+	@Column(name = "game_year") // Alterando o nome da tabela "Year" pois a palavra é usada na linguagem e pode
+								// acarretar problemas
 	private Integer year;
 	private String genre;
-	private String plataform;
+	private String platforms;
+	private Double score;
 	private String imgUrl;
+
+	@Column(columnDefinition = "TEXT")
 	private String shortDescription;
+
+	@Column(columnDefinition = "TEXT") // Isso irá corrigir o erro de VARCHAR(255) do banco de dados, tornando o limite
+										// de caracteres maior.
 	private String longDescription;
-	
-	public Game() {	
+
+	public Game() {
 	}
 
-	public Game(Long id, String title, Integer year, String genre, String plataform, String imgUrl,
+	public Game(Long id, String title, Integer year, String genre, String platforms, Double score, String imgUrl,
 			String shortDescription, String longDescription) {
 		this.id = id;
 		this.title = title;
 		this.year = year;
 		this.genre = genre;
-		this.plataform = plataform;
+		this.platforms = platforms;
+		this.score = score;
 		this.imgUrl = imgUrl;
 		this.shortDescription = shortDescription;
 		this.longDescription = longDescription;
@@ -72,12 +81,20 @@ public class Game {
 		this.genre = genre;
 	}
 
-	public String getPlataform() {
-		return plataform;
+	public String getPlatforms() {
+		return platforms;
 	}
 
-	public void setPlataform(String plataform) {
-		this.plataform = plataform;
+	public void setPlatforms(String platforms) {
+		this.platforms = platforms;
+	}
+
+	public Double getScore() {
+		return score;
+	}
+
+	public void setScore(Double score) {
+		this.score = score;
 	}
 
 	public String getImgUrl() {
@@ -120,6 +137,5 @@ public class Game {
 		Game other = (Game) obj;
 		return Objects.equals(id, other.id);
 	}
-		
-	
+
 }
