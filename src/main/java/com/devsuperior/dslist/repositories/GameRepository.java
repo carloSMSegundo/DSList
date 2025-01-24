@@ -1,4 +1,4 @@
-package com.devsuperior.dslist.repositories;
+package com.devsuperior.dslist.repositories; //Componente de acesso a dados
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
